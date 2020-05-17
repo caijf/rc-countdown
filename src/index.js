@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import CountDownPro from "countdown-pro";
 import { format as formatUtil } from "countdown-pro/lib/util";
 
+const noop = () => { }
+
 const CountDown = React.forwardRef(({
   time = 0,
   interval = 1000,
   format = 'HH:mm:ss',
   autoStart = true,
-  onEnd = () => { },
+  onChange = noop,
+  onEnd = noop,
   ...restProps
 }, ref) => {
   const formatTime = useCallback((time) => {
@@ -25,7 +28,10 @@ const CountDown = React.forwardRef(({
     time,
     interval,
     format: formatTime,
-    onChange: setTimeState,
+    onChange: time => {
+      setTimeState(time);
+      onChange(time);
+    },
     onEnd
   }), [time, interval, format]);
 
@@ -58,6 +64,7 @@ CountDown.propTypes = {
     PropTypes.func
   ]),
   autoStart: PropTypes.bool,
+  onChange: PropTypes.func,
   onEnd: PropTypes.func
 }
 

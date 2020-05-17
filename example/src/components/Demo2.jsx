@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import CountDown from "rc-countdown";
+import CountDown from "rc-countdown-view";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import tomorrowNightEighties from "react-syntax-highlighter/dist/esm/styles/hljs/tomorrow-night-eighties";
 
@@ -15,7 +15,7 @@ export default () => {
       后自动返回
       <SyntaxHighlighter language="javascript" style={tomorrowNightEighties}>
         {`import React, { useCallback } from "react";
-import CountDown from "rc-countdown";
+import CountDown from "rc-countdown-view";
 
 export default () => {
   const format = useCallback((timestamp) => timestamp / 1000, []);

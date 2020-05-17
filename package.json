@@ -1,6 +1,6 @@
 {
-  "name": "rc-countdown",
-  "version": "0.0.0",
+  "name": "rc-countdown-view",
+  "version": "1.0.0",
   "description": "A simple countdown react component.",
   "main": "lib/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caijf/rc-countdown.git"
+    "url": "git+https://github.com/caijf/rc-countdown-view.git"
   },
   "keywords": [
     "countdown",
@@ -20,9 +20,9 @@
   "author": "caijf",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/caijf/rc-countdown/issues"
+    "url": "https://github.com/caijf/rc-countdown-view/issues"
   },
-  "homepage": "https://github.com/caijf/rc-countdown#readme",
+  "homepage": "https://github.com/caijf/rc-countdown-view#readme",
   "dependencies": {
     "countdown-pro": "^1.0.0",
     "prop-types": "^15.7.2"
