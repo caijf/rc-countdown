@@ -7,9 +7,9 @@
 ## 安装
 
 ```shell
-npm install rc-countdown
+npm install rc-countdown-view
 # or
-yarn install rc-countdown
+yarn install rc-countdown-view
 ```
 
 
@@ -17,7 +17,7 @@ yarn install rc-countdown
 
 ```javascript
 import React from 'react';
-import CountDown from 'rc-countdown';
+import CountDown from 'rc-countdown-view';
 
 export default ()=>{
   return (
