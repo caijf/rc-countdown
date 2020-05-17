@@ -1,4 +1,4 @@
-# rc-countdown
+# rc-countdown-view
 
 一个简单的 `react` 倒计时组件。
 
