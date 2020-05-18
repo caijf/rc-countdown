@@ -19,7 +19,7 @@ yarn install rc-countdown-view
 import React from 'react';
 import CountDown from 'rc-countdown-view';
 
-export default ()=>{
+export default () => {
   return (
     <CountDown time={10 * 60 * 60 * 1000} />
   )

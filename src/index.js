@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useMemo, useCallback, useImperativeHandle } from "react";
 import PropTypes from 'prop-types';
 import CountDownPro from "countdown-pro";
 import { format as formatUtil } from "countdown-pro/lib/util";
@@ -11,8 +11,7 @@ const CountDown = React.forwardRef(({
   format = 'HH:mm:ss',
   autoStart = true,
   onChange = noop,
-  onEnd = noop,
-  ...restProps
+  onEnd = noop
 }, ref) => {
   const formatTime = useCallback((time) => {
     if (typeof format === 'string') {
@@ -35,13 +34,11 @@ const CountDown = React.forwardRef(({
     onEnd
   }), [time, interval, format]);
 
-  useEffect(() => {
-    if (ref && ref.current) {
-      ref.current.start = countdown.start.bind(countdown);
-      ref.current.pause = countdown.pause.bind(countdown);
-      ref.current.reset = countdown.reset.bind(countdown);
-    }
-  }, [ref]);
+  useImperativeHandle(ref, () => ({
+    start: countdown.start.bind(countdown),
+    pause: countdown.pause.bind(countdown),
+    reset: countdown.reset.bind(countdown)
+  }), [ref]);
 
   useEffect(() => {
     if (autoStart) {
@@ -51,9 +48,7 @@ const CountDown = React.forwardRef(({
     return () => countdown.pause();
   }, []);
 
-  return (
-    <span ref={ref} {...restProps}>{timeState}</span>
-  );
+  return timeState
 });
 
 CountDown.propTypes = {
