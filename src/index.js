@@ -13,13 +13,13 @@ const CountDown = React.forwardRef(({
   onChange = noop,
   onEnd = noop
 }, ref) => {
-  const formatTime = useCallback((time) => {
+  const formatTime = useCallback((timestamp) => {
     if (typeof format === 'string') {
-      return formatUtil(time, format);
+      return formatUtil(timestamp, format);
     } else if (typeof format === 'function') {
-      return format(time);
+      return format(timestamp);
     } else {
-      return time;
+      return timestamp;
     }
   }, [format]);
   const [timeState, setTimeState] = useState(() => formatTime(time));
@@ -27,9 +27,9 @@ const CountDown = React.forwardRef(({
     time,
     interval,
     format: formatTime,
-    onChange: time => {
-      setTimeState(time);
-      onChange(time);
+    onChange: fmtTime => {
+      setTimeState(fmtTime);
+      onChange(fmtTime);
     },
     onEnd
   }), [time, interval, format]);
