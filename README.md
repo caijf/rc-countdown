@@ -37,6 +37,6 @@ format  | 时间格式化。如果传入 `string`，DD-日，HH-时，mm-分，s
 autoStart | 自动开始 | `boolean` | `true` |
 onChange | 时间变化时触发 `(time)=>void` | `function` | - |
 onEnd | 倒计时结束时触发 | `function` | - |
-ref | 当需要手动控制时，传入 `useRef` 将在 `ref.current` 扩展三个方法：`start` `pause` `reset` | - | - |
+ref | 当需要手动控制时，传入 `useRef` 将在 `ref.current` 挂载三个方法：`start` `pause` `reset` | - | - |
 
 [site]: https://caijf.github.io/rc-countdown-view/site/
