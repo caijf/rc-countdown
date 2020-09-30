@@ -3,7 +3,7 @@ import React from 'react';
 interface CountDownProps {
   time: number;
   interval?: number;
-  format?: string;
+  format?: string | ((timestamp: number) => any);
   autoStart?: boolean;
   onChange?: (time: any) => void;
   onEnd?: () => void;
