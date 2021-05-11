@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/caijf/rc-countdown-view#readme",
   "dependencies": {
+    "@babel/runtime": "^7.14.0",
     "countdown-pro": "^1.0.0",
     "prop-types": "^15.7.2"
   },
