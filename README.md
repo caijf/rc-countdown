@@ -1,5 +1,7 @@
 # rc-countdown-view
 
+[![npm][npm]][npm-url] ![GitHub](https://img.shields.io/github/license/caijf/rc-countdown-view.svg)
+
 一个简单的 `react` 倒计时组件。
 
 [查看示例][site]
@@ -37,4 +39,6 @@ export default () => {
 | onEnd | 倒计时结束时触发 | `() => void` | - |
 | ref | 常用操作，开始/暂停/重置 | `ActionType` | - |
 
-[site]: https://caijf.github.io/rc-countdown-view/site/
+[site]: https://caijf.github.io/rc-countdown-view/index.html
+[npm]: https://img.shields.io/npm/v/rc-countdown-view.svg
+[npm-url]: https://npmjs.com/package/rc-countdown-view
