@@ -1,6 +1,8 @@
 # rc-countdown-view
 
-一个简单倒计时 react 组件。
+[![npm][npm]][npm-url] ![GitHub](https://img.shields.io/github/license/caijf/rc-countdown-view.svg)
+
+一个简单倒计时 `react` 组件。
 
 ## 代码演示
 
@@ -41,3 +43,6 @@ type ActionType = {
   reset: () => void;
 };
 ```
+
+[npm]: https://img.shields.io/npm/v/rc-countdown-view.svg
+[npm-url]: https://npmjs.com/package/rc-countdown-view
