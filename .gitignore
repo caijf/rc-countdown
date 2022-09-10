@@ -4,8 +4,10 @@ node_modules
 module-config.js
 package-lock.json
 yarn.lock
-.umi
+
 lib/
 es/
 
 docs-dist/
+.umi
+.umi-production

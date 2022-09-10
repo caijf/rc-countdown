@@ -2,7 +2,7 @@
 
 [![npm][npm]][npm-url] ![GitHub](https://img.shields.io/github/license/caijf/rc-countdown-view.svg)
 
-一个简单的 `react` 倒计时组件。
+一个简单倒计时 `react` 组件。
 
 [查看示例][site]
 
@@ -17,7 +17,6 @@ yarn install rc-countdown-view
 ## 示例
 
 ```javascript
-import React from 'react';
 import CountDown from 'rc-countdown-view';
 
 export default () => {
