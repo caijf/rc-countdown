@@ -3,6 +3,7 @@ node_modules
 .vscode
 module-config.js
 package-lock.json
+yarn.lock
 .umi
 lib/
 es/
