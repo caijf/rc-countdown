@@ -11,6 +11,7 @@
   "scripts": {
     "test": "jest --verbose",
     "start": "dumi dev",
+    "doc": "dumi build",
     "build": "npm run build:cjs && npm run build:es",
     "build:cjs": "rm -rf lib && tsc --outDir lib -t es5 -m commonjs",
     "build:es": "rm -rf es && tsc --outDir es -t es5 -m es2015",
