@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CountDown snapshot 1`] = `
+<span
+  className="test"
+>
+  00:01:00
+</span>
+`;
