@@ -21,5 +21,8 @@ export default defineConfig({
   targets: {
     ie: 11
   },
+  polyfill: {
+    imports: ['element-remove', 'core-js']
+  },
   // more config: https://d.umijs.org/config
 });
