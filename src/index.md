@@ -1,6 +1,11 @@
+---
+title: 倒计时
+sidemenu: false
+---
+
 # rc-countdown-view
 
-[![npm][npm]][npm-url] ![GitHub](https://img.shields.io/github/license/caijf/rc-countdown-view.svg)
+[![npm][npm]][npm-url] ![GitHub](https://img.shields.io/github/license/caijf/rc-countdown-view.svg) [![GitHub Star][github-star]][github-url]
 
 一个简单倒计时 `react` 组件。
 
@@ -46,3 +51,5 @@ type ActionType = {
 
 [npm]: https://img.shields.io/npm/v/rc-countdown-view.svg
 [npm-url]: https://npmjs.com/package/rc-countdown-view
+[github-star]: https://img.shields.io/github/stars/caijf/rc-countdown-view?style=social
+[github-url]: https://github.com/caijf/rc-countdown-view
