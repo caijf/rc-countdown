@@ -19,7 +19,8 @@
     "lint-fix": "npm run lint -- --fix",
     "prettier": "prettier --write **/*",
     "commit": "cz",
-    "prepublishOnly": "npm test && npm run build"
+    "prepublishOnly": "npm test && npm run build",
+    "tsc": "tsc --noEmit"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": "eslint",
@@ -50,7 +51,7 @@
   },
   "homepage": "https://github.com/caijf/rc-countdown-view#readme",
   "dependencies": {
-    "countdown-pro": "^2.0.0",
+    "countdown-pro": "^2.0.1",
     "tslib": "^2.4.0"
   },
   "devDependencies": {
