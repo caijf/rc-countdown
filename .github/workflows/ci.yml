@@ -15,15 +15,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
         with:
-          persist-credentials: false
+          version: 8
       - name: Install
-        run: yarn install
+        run: pnpm install
       - name: Build
-        run: yarn build
+        run: pnpm build
       - name: Build docs
-        run: yarn doc
+        run: pnpm run doc
       - name: Deploy docs
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
