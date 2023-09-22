@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import CountDown, { ActionType } from '..';
+import CountDown, { ActionType } from 'rc-countdown-view';
 
 function Demo() {
   const actionRef = useRef<ActionType>(null);
@@ -9,12 +9,11 @@ function Demo() {
       <CountDown
         time={10 * 1000}
         interval={35}
-        format='ss:SSS'
+        format="ss:SSS"
         onEnd={() => console.log('倒计时结束！')}
         autoStart={false}
         ref={actionRef}
       />
-      <br />
       <br />
       <button onClick={() => actionRef.current?.start()}>开始</button>
       <button onClick={() => actionRef.current?.pause()}>暂停</button>

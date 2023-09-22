@@ -1,12 +1,8 @@
 import React from 'react';
-import CountDown from '..';
+import CountDown from 'rc-countdown-view';
 
 function Demo() {
-  return (
-    <div>
-      <CountDown time={8 * 60 * 60 * 1000} onEnd={() => console.log('倒计时结束！')} />
-    </div>
-  );
+  return <CountDown time={8 * 60 * 60 * 1000} />;
 }
 
 export default Demo;
