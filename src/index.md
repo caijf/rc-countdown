@@ -27,6 +27,10 @@ sidemenu: false
 
 <code src="./demos/control.tsx" />
 
+### 突变
+
+<code src="./demos/mutate.tsx" />
+
 ## API
 
 除了以下属性，还支持 `span` 标签的其他属性。
@@ -39,13 +43,14 @@ sidemenu: false
 | autoStart | 自动开始 | `boolean` | `true` |
 | onChange | 时间变化时触发，参数是 `format` 的返回值。 | `(formatTime: string) => void` | - |
 | onEnd | 倒计时结束时触发 | `() => void` | - |
-| ref | 常用操作，开始/暂停/重置 | `ActionType` | - |
+| ref | 常用操作，开始/暂停/重置/重新开始 | `ActionType` | - |
 
 ```typescript
 type ActionType = {
   start: () => void;
   pause: () => void;
   reset: () => void;
+  restart: () => void;
 };
 ```
 

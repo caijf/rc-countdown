@@ -4,23 +4,23 @@ import typescript from '@rollup/plugin-typescript';
 import { defineConfig } from 'rollup';
 
 export default defineConfig({
-  input: "src/index.tsx",
-  external: ["react", "tslib", "countdown-pro"],
+  input: 'src/index.tsx',
+  external: ['react', 'tslib', 'countdown-pro', 'rc-hooks'],
   output: [
     {
-      format: "es",
-      file: "es/index.js"
+      format: 'es',
+      file: 'es/index.js'
     },
     {
-      format: "cjs",
-      file: "lib/index.js"
-    },
+      format: 'cjs',
+      file: 'lib/index.js'
+    }
   ],
   plugins: [
     resolve(),
     commonjs(),
     typescript({
-      tsconfig: "./tsconfig.build.json"
+      tsconfig: './tsconfig.build.json'
     })
   ]
 });

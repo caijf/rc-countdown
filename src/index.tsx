@@ -1,18 +1,29 @@
-import React, { forwardRef, useState, useEffect, useImperativeHandle, useRef } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 import CountDownPro, { Options } from 'countdown-pro';
+import { useLatest, useSafeState, useUpdateEffect } from 'rc-hooks';
 
-export type ActionType = {
-  start: () => void;
-  pause: () => void;
-  reset: () => void;
-};
+type CountDownInstanceType = InstanceType<typeof CountDownPro>;
+
+export type ActionType = CountDownInstanceType;
+
+type FormatType =
+  | string
+  | ((timestamp: number, format: ReturnType<typeof CountDownPro.parseTimeData>) => string);
+
+function formatTime(timestamp: number, format?: FormatType) {
+  if (typeof format === 'string') {
+    return CountDownPro.format(timestamp, format);
+  } else if (format instanceof Function) {
+    return format(timestamp, CountDownPro.parseTimeData(timestamp));
+  } else {
+    return '' + timestamp;
+  }
+}
 
 export interface CountDownProps
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'onChange'>,
     Pick<Options, 'time' | 'interval' | 'onEnd'> {
-  format?:
-    | string
-    | ((timestamp: number, formatRes: ReturnType<typeof CountDownPro.parseTimeData>) => string);
+  format?: FormatType;
   autoStart?: boolean;
   onChange?: (formatTime: string) => void;
 }
@@ -30,33 +41,24 @@ const CountDown = forwardRef<ActionType, CountDownProps>(
     },
     ref
   ) => {
-    const formatTime = (timestamp: number) => {
-      if (typeof format === 'string') {
-        return CountDownPro.format(timestamp, format);
-      } else if (format instanceof Function) {
-        return format(timestamp, CountDownPro.parseTimeData(timestamp));
-      } else {
-        return '' + timestamp;
-      }
-    };
-    const unmountedRef = useRef(false);
-    const [timeState, setTimeState] = useState(() => formatTime(time));
+    const [timeState, setTimeState] = useSafeState(() => formatTime(time, format));
+    const changeLatest = useLatest(onChange);
+    const endLatest = useLatest(onEnd);
+    const formatLatest = useLatest(format);
 
-    const handleChange = (currentTime: number) => {
-      if (!unmountedRef.current) {
-        const fmtTime = formatTime(currentTime);
-        setTimeState(fmtTime);
-        onChange?.(fmtTime);
-      }
-    };
-
-    const countdownRef = useRef<InstanceType<typeof CountDownPro>>();
+    const countdownRef = useRef<CountDownInstanceType | null>(null);
     if (!countdownRef.current) {
       countdownRef.current = new CountDownPro({
         time,
         interval,
-        onChange: handleChange,
-        onEnd
+        onChange(currentTime) {
+          const fmtTime = formatTime(currentTime, formatLatest.current);
+          setTimeState(fmtTime);
+          changeLatest.current?.(fmtTime);
+        },
+        onEnd() {
+          endLatest.current?.();
+        }
       });
     }
 
@@ -68,11 +70,14 @@ const CountDown = forwardRef<ActionType, CountDownProps>(
       }
 
       return () => {
-        unmountedRef.current = true;
         countdownRef.current?.pause();
+        countdownRef.current = null;
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useUpdateEffect(() => {
+      countdownRef.current?.updateOptions({ time, interval });
+    }, [time, interval]);
 
     return <span {...restProps}>{timeState}</span>;
   }
