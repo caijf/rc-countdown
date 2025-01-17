@@ -73,6 +73,7 @@ const CountDown = forwardRef<ActionType, CountDownProps>(
         countdownRef.current?.pause();
         countdownRef.current = null;
       };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useUpdateEffect(() => {
