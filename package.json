@@ -23,7 +23,7 @@
     "commit": "cz",
     "prepublishOnly": "npm test && npm run build",
     "tsc": "tsc --noEmit",
-    "prepare": "husky install"
+    "prepare": "husky install && dumi setup"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": "eslint",
@@ -69,8 +69,7 @@
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "cz-conventional-changelog": "^3.3.0",
-    "dumi": "^1.1.54",
-    "element-remove": "^1.0.4",
+    "dumi": "^2.4.17",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.4",
     "eslint-plugin-react-hooks": "^4.6.2",

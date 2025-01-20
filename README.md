@@ -44,6 +44,6 @@ export default () => {
 | onEnd | 倒计时结束时触发 | `() => void` | - |
 | ref | 常用操作，开始/暂停/重置 | `ActionType` | - |
 
-[site]: https://caijf.github.io/rc-countdown-view/index.html
+[site]: https://caijf.github.io/rc-countdown-view/
 [npm]: https://img.shields.io/npm/v/rc-countdown-view.svg
 [npm-url]: https://npmjs.com/package/rc-countdown-view
