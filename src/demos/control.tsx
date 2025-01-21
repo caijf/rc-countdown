@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import CountDown, { ActionType } from 'rc-countdown-view';
 
 function Demo() {
-  const actionRef = useRef<ActionType>(null);
+  const actionRef = useRef<ActionType>();
 
   return (
     <div>
@@ -12,7 +12,7 @@ function Demo() {
         format="ss:SSS"
         onEnd={() => console.log('倒计时结束！')}
         autoStart={false}
-        ref={actionRef}
+        actionRef={actionRef}
       />
       <br />
       <button onClick={() => actionRef.current?.start()}>开始</button>

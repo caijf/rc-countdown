@@ -90,7 +90,7 @@ describe('CountDown', () => {
   });
 
   it('autoStart=false', async () => {
-    const actionRef = { current: null };
+    const actionRef = { current: undefined };
     const changeFn = jest.fn();
     const endFn = jest.fn();
 
@@ -102,7 +102,7 @@ describe('CountDown', () => {
         onChange={changeFn}
         onEnd={endFn}
         autoStart={false}
-        ref={actionRef}
+        actionRef={actionRef}
       />
     );
 
@@ -130,7 +130,7 @@ describe('CountDown', () => {
   });
 
   it('update `time` `interval` `format` effect', async () => {
-    const actionRef = { current: null };
+    const actionRef = { current: undefined };
     const changeFn = jest.fn();
     const endFn = jest.fn();
 
@@ -141,7 +141,7 @@ describe('CountDown', () => {
         format={'HH:mm:ss'}
         onChange={changeFn}
         onEnd={endFn}
-        ref={actionRef}
+        actionRef={actionRef}
       />
     );
 
@@ -157,7 +157,7 @@ describe('CountDown', () => {
           format={'mm:ss'}
           onChange={changeFn}
           onEnd={endFn}
-          ref={actionRef}
+          actionRef={actionRef}
         />
       );
       jest.advanceTimersByTime(30 * 1000);
@@ -175,7 +175,7 @@ describe('CountDown', () => {
           format={'mm:ss'}
           onChange={changeFn}
           onEnd={endFn}
-          ref={actionRef}
+          actionRef={actionRef}
         />
       );
       // @ts-ignore

@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+import React, { useEffect, useImperativeHandle, useRef } from 'react';
 import CountDownPro, { Options } from 'countdown-pro';
 import { useLatest, useSafeState, useUpdateEffect } from 'rc-hooks';
 
@@ -26,64 +26,59 @@ export interface CountDownProps
   format?: FormatType;
   autoStart?: boolean;
   onChange?: (formatTime: string) => void;
+  actionRef?: React.MutableRefObject<ActionType | undefined>;
 }
 
-const CountDown = forwardRef<ActionType, CountDownProps>(
-  (
-    {
-      time = 0,
-      interval = 1000,
-      format = 'HH:mm:ss',
-      autoStart = true,
-      onChange,
-      onEnd,
-      ...restProps
-    },
-    ref
-  ) => {
-    const [timeState, setTimeState] = useSafeState(() => formatTime(time, format));
-    const changeLatest = useLatest(onChange);
-    const endLatest = useLatest(onEnd);
-    const formatLatest = useLatest(format);
+const CountDown: React.FC<CountDownProps> = ({
+  time = 0,
+  interval = 1000,
+  format = 'HH:mm:ss',
+  autoStart = true,
+  onChange,
+  onEnd,
+  actionRef,
+  ...restProps
+}) => {
+  const [timeState, setTimeState] = useSafeState(() => formatTime(time, format));
+  const changeLatest = useLatest(onChange);
+  const endLatest = useLatest(onEnd);
+  const formatLatest = useLatest(format);
 
-    const countdownRef = useRef<CountDownInstanceType | null>(null);
-    if (!countdownRef.current) {
-      countdownRef.current = new CountDownPro({
-        time,
-        interval,
-        onChange(currentTime) {
-          const fmtTime = formatTime(currentTime, formatLatest.current);
-          setTimeState(fmtTime);
-          changeLatest.current?.(fmtTime);
-        },
-        onEnd() {
-          endLatest.current?.();
-        }
-      });
+  const countdownRef = useRef<CountDownInstanceType | null>(null);
+  if (!countdownRef.current) {
+    countdownRef.current = new CountDownPro({
+      time,
+      interval,
+      onChange(currentTime) {
+        const fmtTime = formatTime(currentTime, formatLatest.current);
+        setTimeState(fmtTime);
+        changeLatest.current?.(fmtTime);
+      },
+      onEnd() {
+        endLatest.current?.();
+      }
+    });
+  }
+
+  useImperativeHandle(actionRef, () => countdownRef.current!, []);
+
+  useEffect(() => {
+    if (autoStart) {
+      countdownRef.current?.start();
     }
 
-    useImperativeHandle(ref, () => countdownRef.current!, []);
+    return () => {
+      countdownRef.current?.pause();
+      countdownRef.current = null;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    useEffect(() => {
-      if (autoStart) {
-        countdownRef.current?.start();
-      }
+  useUpdateEffect(() => {
+    countdownRef.current?.updateOptions({ time, interval });
+  }, [time, interval]);
 
-      return () => {
-        countdownRef.current?.pause();
-        countdownRef.current = null;
-      };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    useUpdateEffect(() => {
-      countdownRef.current?.updateOptions({ time, interval });
-    }, [time, interval]);
-
-    return <span {...restProps}>{timeState}</span>;
-  }
-);
-
-CountDown.displayName = 'CountDown';
+  return <span {...restProps}>{timeState}</span>;
+};
 
 export default CountDown;

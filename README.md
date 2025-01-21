@@ -42,7 +42,7 @@ export default () => {
 | autoStart | 自动开始 | `boolean` | `true` |
 | onChange | 时间变化时触发，参数是 `format` 的返回值。 | `(formatTime: string) => void` | - |
 | onEnd | 倒计时结束时触发 | `() => void` | - |
-| ref | 常用操作，开始/暂停/重置 | `ActionType` | - |
+| actionRef | 常用操作，开始/暂停/重置 | `MutableRefObject<ActionType>` | - |
 
 [site]: https://caijf.github.io/rc-countdown-view/
 [npm]: https://img.shields.io/npm/v/rc-countdown-view.svg

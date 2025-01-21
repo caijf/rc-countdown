@@ -3,7 +3,7 @@ import CountDown, { ActionType } from 'rc-countdown-view';
 import { useSetState } from 'rc-hooks';
 
 function Demo() {
-  const countdownActionRef = useRef<ActionType>(null);
+  const countdownActionRef = useRef<ActionType>();
   const [state, setState] = useSetState({
     inputTime: 60 * 60,
     inputInterval: 1,
@@ -91,7 +91,7 @@ function Demo() {
           time={state.time}
           interval={state.interval}
           format={state.format}
-          ref={countdownActionRef}
+          actionRef={countdownActionRef}
         />
       </div>
     </div>
