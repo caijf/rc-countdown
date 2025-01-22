@@ -6,8 +6,7 @@ package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
-lib/
-es/
+dist/
 types/
 
 docs-dist/

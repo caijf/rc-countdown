@@ -9,16 +9,16 @@ export default defineConfig({
   output: [
     {
       format: 'es',
-      file: 'es/index.js'
+      file: 'dist/index.esm.js'
     },
     {
       format: 'cjs',
-      file: 'lib/index.js'
+      file: 'dist/index.cjs.js'
     }
   ],
   plugins: [
-    resolve(),
     commonjs(),
+    resolve(),
     typescript({
       tsconfig: './tsconfig.build.json'
     })

@@ -13,10 +13,7 @@ export default defineConfig({
       default: 'light',
       switch: false
     },
-    footer: `<div>
-    <div>caijf | Copyright © 2020-present</div>
-    <div>Powered by <a href="https://d.umijs.org/" target="_blank">dumi</a></div>
-    </div>`
+    footer: 'caijf | Copyright © 2020-present'
   },
   favicons: ['https://www.caijinfeng.com/favicon.ico'],
   base: publicPath,
