@@ -49,6 +49,7 @@ const CountDown: React.FC<CountDownProps> = ({
     countdownRef.current = new CountDownPro({
       time,
       interval,
+      adjustInterval: interval * 10,
       onChange(currentTime) {
         const fmtTime = formatTime(currentTime, formatLatest.current);
         setTimeState(fmtTime);
